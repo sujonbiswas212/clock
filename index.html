@@ -7,9 +7,50 @@
     <title> clock</title>
 </head>
 <body>
-    <div>sujon biswas </div>
-    <marquee behavior="" direction="">sujon biswas for the business</marquee>
-    <marquee behavior="" direction="">computer technology</marquee>
+    <div class="mywatch">
+        <span class="H"></span>
+        <span class="M"></span>
+        <span class="Date"></span>
+
+    </div>
+
+    <script>
+        function myTime(){
+            var myDate = new Date();
+            var hr,min = (myDate.getMinutes()<10) ? "0" + myDate.getMinutes() : myDate.getMinutes(),
+              sec = (myDate.getSeconds()<10) ? "0" + myDate.getSeconds() : myDate.getSeconds(),
+              M = (myDate.getHours()>=12) ? "PM" : "AM";
+              if(myDate.getHours() ==0){
+                hr = 12;
+
+              }
+              else if(myDate.getHours() > 12){
+                hr = myDate.getHours() -12;
+
+
+              }
+              else{
+                hr = myDate.getHours();
+              }
+              var currentTime = hr + ":" + min + ":" + sec +"";
+
+              document.getElementsByClassName("H")[0].innerHTML = currentTime;
+              document.getElementsByClassName("M")[0].innerHTML = M;
+              var myDay = ["sunda", "monday", "tuesday", "wodnesday","thusday", "friday","starday"]
+              var myMonth = ["january", "February", "march", "April","May","june","july","August","September", "october","Novemer" , "December"];
+              var day = myDate.getDate();
+              var currentDate = myDay[myDate.getDay()] + "," + myMonth[myDate.getMonth()] + day;
+              document.getElementsByClassName("Date")[0].innerHTML = currentDate;
+
+
+        }
+
+        myTime();
+        setInterval(function(){
+            myTime();
+        }, 100 );
+    </script>
     
+
 </body>
 </html>
